@@ -19,14 +19,13 @@ This file is the project-level operating contract. Read it before changing code,
 
 At the start of every session, read only what is needed, in this order:
 
-1. `AGENTS.md` for operating rules.
-2. `PROJECT_STATUS.md` for current state and handoff.
-3. `TASKS.md` for active task IDs and backlog.
-4. `PROJECT_CONTROL.md` for lifecycle, gates, and workflow.
-5. `DEMO_DEVELOPMENT_GUIDE.md` for v0 behavior, architecture, design, and acceptance criteria.
-6. `CONTEXT.md` for compact agent onboarding.
-7. `DECISIONS.md` when changing product, architecture, workflow, safety, or design direction.
-8. `国产大模型桌面 AI 编程工具——项目决策文档.md` only as historical strategy archive.
+1. `PROJECT_STATUS.md` for current state and handoff.
+2. `TASKS.md` for active task IDs and backlog.
+3. `PROJECT_CONTROL.md` for lifecycle, gates, and workflow.
+4. `DEMO_DEVELOPMENT_GUIDE.md` for v0 behavior, architecture, design, and acceptance criteria.
+5. `CONTEXT.md` for compact agent onboarding.
+6. `DECISIONS.md` when changing product, architecture, workflow, safety, or design direction.
+7. `国产大模型桌面 AI 编程工具——项目决策文档.md` only as historical strategy archive.
 
 Do not bulk-load every document by default. Read deeper only when the task requires it.
 
