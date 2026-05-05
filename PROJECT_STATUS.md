@@ -18,6 +18,8 @@ Today converted the project from a strategy memo into a controlled Git project w
 - Added Claude / Anthropic-like visual design requirements.
 - Created a reusable Codex skill: `skills/anthropic-brand-style`.
 - Copied that skill to `/Users/yuye/.codex/skills/anthropic-brand-style`.
+- Created a reusable Codex skill: `skills/grill-me`.
+- Added `AGENTS.md` as the project-level instruction file for future agents and parallel workers.
 - Created a Vite + React + Tauri v2 app shell.
 - Implemented static mock workbench UI:
   - file tree panel
@@ -82,11 +84,12 @@ These are expected and should not be committed.
 ## Tomorrow Start Plan
 
 1. Run `git status --short`.
-2. Run `npm run dev`.
-3. Open `http://127.0.0.1:1420` and visually inspect the mock workbench.
-4. Fix layout issues before adding backend behavior.
-5. Start `TASK-001`: visual QA and shell stabilization.
-6. Then start `TASK-002`: workspace picker and real file listing.
+2. Read `AGENTS.md`.
+3. Run `npm run dev`.
+4. Open `http://127.0.0.1:1420` and visually inspect the mock workbench.
+5. Fix layout issues before adding backend behavior.
+6. Start `TASK-001`: visual QA and shell stabilization.
+7. Then start `TASK-002`: workspace picker and real file listing.
 
 ## Verification Log
 

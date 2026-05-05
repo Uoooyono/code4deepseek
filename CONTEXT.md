@@ -2,6 +2,8 @@
 
 **Use this file when starting a new Codex / Claude Code / Deepseek session.**
 
+First read `AGENTS.md`. It is the mandatory project-level instruction file for all agents and parallel workers.
+
 ## Project Identity
 
 `code4deepseek` is a Deepseek-only desktop AI coding workbench. It is not a general multi-model coding agent. The first demo validates a safe local file editing loop:
@@ -83,6 +85,7 @@ git status --short
 ## Key Files
 
 - `README.md`: human entry point.
+- `AGENTS.md`: mandatory project-level agent instructions.
 - `PROJECT_CONTROL.md`: project operating system.
 - `PROJECT_STATUS.md`: current state and handoff.
 - `TASKS.md`: task board.
@@ -92,6 +95,7 @@ git status --short
 - `src/styles.css`: current visual system.
 - `src-tauri/`: Tauri shell.
 - `skills/anthropic-brand-style/`: Codex design skill.
+- `skills/grill-me/`: Codex skill for plan/design interrogation.
 
 ## Tomorrow's Recommended First Move
 
@@ -103,4 +107,3 @@ npm run dev
 ```
 
 Open `http://127.0.0.1:1420`, inspect the UI, then start `TASK-001`.
-

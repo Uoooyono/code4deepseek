@@ -37,6 +37,7 @@ npm run tauri:dev
 
 ## Project Documents
 
+- [AGENTS.md](AGENTS.md): project-level instructions for all future agents and parallel workers.
 - [PROJECT_CONTROL.md](PROJECT_CONTROL.md): full-cycle project management rules.
 - [PROJECT_STATUS.md](PROJECT_STATUS.md): current state, today's recap, and next-session handoff.
 - [TASKS.md](TASKS.md): task board and backlog.
@@ -51,6 +52,7 @@ npm run tauri:dev
 src/                         React frontend demo shell
 src-tauri/                   Tauri v2 Rust app shell
 skills/anthropic-brand-style Codex skill for Claude-like visual style
+skills/grill-me              Codex skill for plan/design interrogation
 dist/                        Ignored build output
 node_modules/                Ignored dependencies
 ```
@@ -58,4 +60,3 @@ node_modules/                Ignored dependencies
 ## Working Rule
 
 Before adding a feature, state which step of the v0 demo loop it serves. If it does not serve the v0 loop, defer it.
-

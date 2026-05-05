@@ -22,6 +22,13 @@ Task status values:
 | TASK-005 | TODO | P0 | Read selected text file from workspace | Clicking a file displays real UTF-8 content |
 | TASK-006 | TODO | P1 | Add binary/large-file guards | Unsupported files show a clear non-destructive state |
 
+## Completed Control Tasks
+
+| ID | Status | Task | Verification |
+| --- | --- | --- | --- |
+| TASK-C001 | DONE | Create project-level `AGENTS.md` for future agents and parallel work | `npm run build`; docs linked from README/control/context |
+| TASK-C002 | DONE | Create `grill-me` Codex skill | Skill files created under `skills/grill-me` |
+
 ## Phase 1: Visual Shell
 
 | ID | Status | Task |
@@ -87,4 +94,3 @@ Move a task to `DONE` only after:
 1. Acceptance criteria are met.
 2. Relevant verification command or manual check is recorded.
 3. Any changed behavior is reflected in docs when needed.
-

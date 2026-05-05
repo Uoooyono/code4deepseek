@@ -80,3 +80,34 @@ Consequences:
 - `TASKS.md` is the active backlog.
 - `PROJECT_CONTROL.md` defines workflow and gates.
 
+## 2026-05-05: AGENTS.md as Project-Level Agent Contract
+
+Decision: Use `AGENTS.md` as the mandatory project-level instruction file for all future agents, including parallel workers.
+
+Rationale:
+
+- Future work will likely span multiple agents and sessions.
+- The repository needs one obvious entry point for agent behavior that is more operational than README.
+- Parallel work needs explicit ownership, write-scope, verification, and integration rules.
+
+Consequences:
+
+- All agents read `AGENTS.md` first.
+- The coordinator owns project-control docs during parallel work.
+- Workers receive task ID, write scope, forbidden paths, and verification command.
+- No worker modifies shared docs, commits, pushes, or changes dependencies unless assigned.
+
+## 2026-05-05: Grill Me Skill
+
+Decision: Add `skills/grill-me` as a Codex skill for interrogating plans and designs one decision at a time.
+
+Rationale:
+
+- The original project decision process used a Grill Me style.
+- Future product and architecture decisions need a repeatable method for resolving branches.
+
+Consequences:
+
+- Use `grill-me` when the user asks to stress-test a plan or says "grill me".
+- The agent should inspect local docs/code before asking questions.
+- Resolved decisions should be written to the relevant project control artifact.

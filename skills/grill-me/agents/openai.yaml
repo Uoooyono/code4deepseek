@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grill Me"
+  short_description: "Relentlessly interview plans and designs."
+  default_prompt: "Use Grill Me to stress-test this plan one decision at a time."

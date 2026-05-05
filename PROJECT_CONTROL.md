@@ -10,12 +10,13 @@ This document defines how the project is controlled across the full lifecycle: p
 
 Use these documents in this order:
 
-1. `PROJECT_STATUS.md` for current state and next-session handoff.
-2. `TASKS.md` for active work and backlog.
-3. `DEMO_DEVELOPMENT_GUIDE.md` for v0 product, architecture, design, and acceptance criteria.
-4. `CONTEXT.md` for AI-agent onboarding.
-5. `DECISIONS.md` for historical decisions and rationale.
-6. `国产大模型桌面 AI 编程工具——项目决策文档.md` only as strategy archive.
+1. `AGENTS.md` for mandatory agent behavior, especially parallel work rules.
+2. `PROJECT_STATUS.md` for current state and next-session handoff.
+3. `TASKS.md` for active work and backlog.
+4. `DEMO_DEVELOPMENT_GUIDE.md` for v0 product, architecture, design, and acceptance criteria.
+5. `CONTEXT.md` for AI-agent onboarding.
+6. `DECISIONS.md` for historical decisions and rationale.
+7. `国产大模型桌面 AI 编程工具——项目决策文档.md` only as strategy archive.
 
 When documents conflict, the newer control documents override the original strategy archive.
 
@@ -31,6 +32,7 @@ Exit criteria:
 - npm dependencies installed and locked.
 - Static Vite build passes.
 - Project control documents exist.
+- `AGENTS.md` exists as project-level agent instruction.
 - Design skill exists and is available.
 
 Status: completed on 2026-05-05.
@@ -107,11 +109,12 @@ Exit criteria:
 
 Start of session:
 
-1. Read `PROJECT_STATUS.md`.
-2. Read the top of `TASKS.md`.
-3. Run `git status --short`.
-4. If dependencies changed, run `npm install`.
-5. Run the smallest relevant verification command before changing behavior.
+1. Read `AGENTS.md`.
+2. Read `PROJECT_STATUS.md`.
+3. Read the top of `TASKS.md`.
+4. Run `git status --short`.
+5. If dependencies changed, run `npm install`.
+6. Run the smallest relevant verification command before changing behavior.
 
 During session:
 
@@ -180,6 +183,7 @@ If a command cannot run, record the reason in `PROJECT_STATUS.md`.
 ## 7. Design Control
 
 Use `skills/anthropic-brand-style` for Claude-like visual work.
+Use `skills/grill-me` when the user wants a plan or design stress-tested one decision at a time.
 
 Rules:
 
@@ -198,4 +202,3 @@ Rules:
 | Tauri/Rust slows iteration | Slow progress | Build mock UI and pure editing engine first |
 | Visual direction drifts | Weak product identity | Use `anthropic-brand-style` skill and visual QA |
 | Secrets leak into repo | Security issue | `.env*` ignored; no API keys in docs or code |
-
