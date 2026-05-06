@@ -38,13 +38,20 @@ Recommended action on the actual dev machine: run `node --version` first; if <20
 
 ## Current Working State
 
-The tracked working tree has the following modifications staged or unstaged at handoff:
+Phase 0.5 changes pushed to `origin/main` as commit `e5b302e` on 2026-05-06.
 
-- New file: `PRODUCT_OVERVIEW.md`
-- Renamed: `国产大模型...项目决策文档.md` → `docs/archive/`
-- Modified: `CLAUDE.md`, `CONTEXT.md`, `DEMO_DEVELOPMENT_GUIDE.md`, `PROJECT_CONTROL.md`, `README.md`, `TASKS.md`, `PROJECT_STATUS.md`, `.gitignore`, `src/types.ts`, `src/mockWorkspace.ts`, `src/App.tsx`
-- Project `skills/` directory removed entirely; native versions installed system-wide at `~/.claude/skills/brand-guidelines/` (from anthropics/skills) and `~/.claude/skills/grill-me/` (carried over from project)
-- Side effect of `npm install`: `package-lock.json` shows minor diff (regenerated for current Node; safe to commit or revert depending on the dev machine's Node version)
+- New: `PRODUCT_OVERVIEW.md`, `.mcp.json` (GitHub MCP server config; reads PAT from `$GITHUB_PERSONAL_ACCESS_TOKEN`)
+- Renamed: `AGENTS.md` → `CLAUDE.md`; `国产大模型...项目决策文档.md` → `docs/archive/`
+- Modified: `CLAUDE.md` (was AGENTS.md), `CONTEXT.md`, `DEMO_DEVELOPMENT_GUIDE.md`, `PROJECT_CONTROL.md`, `README.md`, `TASKS.md`, `.gitignore`, `src/types.ts`, `src/mockWorkspace.ts`, `src/App.tsx`, `DECISIONS.md`
+- Project `skills/` directory removed; native versions installed system-wide at `~/.claude/skills/brand-guidelines/` (from anthropics/skills) and `~/.claude/skills/grill-me/`
+- Local-only: `.claude/settings.local.json` (sandbox permissions, gitignored)
+
+## GitHub Auth & MCP
+
+- HTTPS PAT stored in macOS Keychain via `git config --global credential.helper osxkeychain` — `git push origin main` works without prompting
+- `$GITHUB_PERSONAL_ACCESS_TOKEN` exported in `~/.zshrc` — consumed by `.mcp.json` for the hosted GitHub MCP at `https://api.githubcopilot.com/mcp/`
+- PAT was created on 2026-05-06 with fine-grained scope: Contents/Issues/PRs RW on `Uoooyono/code4deepseek` only
+- ⚠️ The original PAT was exposed in the Claude Code conversation log; rotate via https://github.com/settings/tokens before sharing the conversation
 
 ## Open Items
 
