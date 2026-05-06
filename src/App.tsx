@@ -14,7 +14,9 @@ import {
   SquarePen
 } from "lucide-react";
 import { fileContents, mockFiles, proposal, userRequest } from "./mockWorkspace";
-import type { FileNode, ValidationState } from "./types";
+import type { DiffLine, FileNode, ValidationState } from "./types";
+
+const primaryEdit = proposal.edits[0];
 
 function countMatches(source: string, needle: string) {
   if (!needle) return 0;
@@ -70,20 +72,20 @@ function App() {
 
   const originalContent = fileContents[selectedPath] ?? "";
   const selectedContent =
-    selectedPath === proposal.path && applied
-      ? originalContent.replace(proposal.oldStr, proposal.newStr)
+    selectedPath === primaryEdit.path && applied
+      ? originalContent.replace(primaryEdit.oldStr, primaryEdit.newStr)
       : originalContent;
 
   const validation: ValidationState = useMemo(() => {
-    if (selectedPath !== proposal.path) {
+    if (selectedPath !== primaryEdit.path) {
       return {
         ok: false,
-        message: "当前 proposal 指向 src/App.tsx",
+        message: `当前 proposal 指向 ${primaryEdit.path}`,
         matchCount: 0
       };
     }
 
-    const matchCount = countMatches(originalContent, proposal.oldStr);
+    const matchCount = countMatches(originalContent, primaryEdit.oldStr);
     return {
       ok: matchCount === 1,
       message: matchCount === 1 ? "oldStr 精确匹配一次" : `oldStr 匹配 ${matchCount} 次`,
@@ -91,10 +93,10 @@ function App() {
     };
   }, [originalContent, selectedPath]);
 
-  const diffLines = [
-    { kind: "context", value: '      <h1>Deepseek Workbench</h1>' },
-    { kind: "delete", value: `-      ${proposal.oldStr}` },
-    { kind: "add", value: `+      ${proposal.newStr}` },
+  const diffLines: DiffLine[] = [
+    { kind: "context", value: "      <h1>Deepseek Workbench</h1>" },
+    { kind: "delete", value: `-      ${primaryEdit.oldStr}` },
+    { kind: "add", value: `+      ${primaryEdit.newStr}` },
     { kind: "context", value: "    </main>" }
   ];
 
@@ -207,18 +209,18 @@ function App() {
             <dl>
               <div>
                 <dt>Path</dt>
-                <dd>{proposal.path}</dd>
+                <dd>{primaryEdit.path}</dd>
               </div>
               <div>
                 <dt>oldStr</dt>
                 <dd>
-                  <code>{proposal.oldStr}</code>
+                  <code>{primaryEdit.oldStr}</code>
                 </dd>
               </div>
               <div>
                 <dt>newStr</dt>
                 <dd>
-                  <code>{proposal.newStr}</code>
+                  <code>{primaryEdit.newStr}</code>
                 </dd>
               </div>
             </dl>

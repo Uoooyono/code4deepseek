@@ -5,12 +5,24 @@ export type FileNode = {
   children?: FileNode[];
 };
 
-export type EditProposal = {
-  summary: string;
+export type EditOperation = {
   path: string;
   oldStr: string;
   newStr: string;
   reason: string;
+};
+
+export type EditProposal = {
+  summary: string;
+  edits: EditOperation[];
+  notes: string[];
+};
+
+export type DiffLineKind = "context" | "add" | "delete";
+
+export type DiffLine = {
+  kind: DiffLineKind;
+  value: string;
 };
 
 export type ValidationState = {
@@ -18,4 +30,3 @@ export type ValidationState = {
   message: string;
   matchCount: number;
 };
-

@@ -1,7 +1,7 @@
 # Tasks
 
-**Last updated**: 2026-05-05  
-**Current phase**: Phase 1, Visual Shell  
+**Last updated**: 2026-05-06  
+**Current phase**: Phase 1, Visual Shell (after Phase 0.5 Foundation Cleanup)  
 
 Task status values:
 
@@ -26,15 +26,27 @@ Task status values:
 
 | ID | Status | Task | Verification |
 | --- | --- | --- | --- |
-| TASK-C001 | DONE | Create project-level `AGENTS.md` for future agents and parallel work | `npm run build`; docs linked from README/control/context |
+| TASK-C001 | DONE | Create project-level `CLAUDE.md` for future agents and parallel work | `npm run build`; docs linked from README/control/context |
 | TASK-C002 | DONE | Create `grill-me` Codex skill | Skill files created under `skills/grill-me` |
+
+## Phase 0.5: Foundation Cleanup (2026-05-06)
+
+| ID | Status | Task | Verification |
+| --- | --- | --- | --- |
+| TASK-F001 | DONE | Rewrite CLAUDE.md for Claude Code single-dev workflow (drop Codex/dual-agent framing) | CLAUDE.md is single source of truth |
+| TASK-F002 | DONE | Untrack `skills/` and add to `.gitignore` | `git ls-files skills/` empty |
+| TASK-F003 | DONE | Refactor `EditProposal` type to array shape per DEMO_DEVELOPMENT_GUIDE §5; add `EditOperation` and `DiffLine` | `npx tsc --noEmit` passes |
+| TASK-F004 | DONE | Remove rule duplication from PROJECT_CONTROL.md and CONTEXT.md; reference CLAUDE.md instead | Manual review |
+| TASK-F005 | DONE | Fix Tailwind CSS reference in DEMO_DEVELOPMENT_GUIDE.md §4 → hand-written CSS | grep finds no Tailwind |
+| TASK-F006 | DONE | Archive legacy `国产大模型...项目决策文档.md` to `docs/archive/` | `git status` shows rename |
+| TASK-F007 | DONE | Create `PRODUCT_OVERVIEW.md` (Chinese, non-technical) | File exists, linked from README |
 
 ## Phase 1: Visual Shell
 
 | ID | Status | Task |
 | --- | --- | --- |
 | TASK-001 | TODO | Browser visual QA for existing mock workbench |
-| TASK-007 | TODO | Review design against `anthropic-brand-style` skill |
+| TASK-007 | TODO | Review design against CLAUDE.md §Design System (use system-installed `brand-guidelines` skill if present) |
 | TASK-008 | TODO | Adjust responsive constraints for narrower desktop widths |
 | TASK-009 | TODO | Add clear empty state for no workspace selected |
 

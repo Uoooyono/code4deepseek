@@ -1,110 +1,66 @@
 # Project Status
 
-**Date**: 2026-05-05  
-**Branch**: `main`  
-**Remote**: `git@github.com:Uoooyono/code4deepseek.git`  
-**Latest pushed code commit before project-control docs**: `cffd834 Add npm lockfile and React types`  
+**Date**: 2026-05-06
+**Branch**: `main`
+**Remote**: `git@github.com:Uoooyono/code4deepseek.git`
 
 ## Summary
 
-Today converted the project from a strategy memo into a controlled Git project with a runnable React/Tauri demo shell, a Deepseek-only product direction, Claude-like design requirements, and project-management documents for continuing work tomorrow. The final control-doc commit should be checked with `git log --oneline -1`.
+Today completed **Phase 0.5: Foundation Cleanup** — a refactor session that addressed redundancy and contract drift identified in the 2026-05-06 audit report. Key results: CLAUDE.md is now the single source of truth for project rules, the `EditProposal` type matches the model output schema, `skills/` is untracked, and a Chinese product overview was added for non-technical reading.
 
-## Completed Today
+## Completed Today (2026-05-06)
 
-- Read and reorganized the original project decision memo.
-- Created `DEMO_DEVELOPMENT_GUIDE.md` as the v0 demo specification.
-- Translated the demo guide into Chinese.
-- Changed strategy from multi-model / MiMo-aware planning to **Deepseek-only**.
-- Added Claude / Anthropic-like visual design requirements.
-- Created a reusable Codex skill: `skills/anthropic-brand-style`.
-- Copied that skill to `/Users/yuye/.codex/skills/anthropic-brand-style`.
-- Created a reusable Codex skill: `skills/grill-me`.
-- Added `AGENTS.md` as the project-level instruction file for future agents and parallel workers.
-- Created a Vite + React + Tauri v2 app shell.
-- Implemented static mock workbench UI:
-  - file tree panel
-  - selected file preview
-  - diff preview
-  - Deepseek proposal panel
-  - apply/undo mock controls
-- Installed npm dependencies.
-- Added `package-lock.json`.
-- Fixed React TypeScript declarations.
-- Verified `npm run build` passes.
-- Initialized Git repository.
-- Merged remote initial `README.md` commit without force-push.
-- Pushed project to GitHub.
+- **CLAUDE.md** rewritten for single-developer + Claude Code workflow. Removed dual-agent (Codex / 于野) framing. Removed parallel-worker rules (single dev only). Removed `skills/` from File Map. Tightened Working Protocol around the two-machine sync model.
+- **`.gitignore`** now includes `skills/`. The directory was untracked via `git rm -r --cached skills/`; local files preserved.
+- **`src/types.ts`** refactored: `EditProposal` is now `{ summary, edits: EditOperation[], notes: string[] }` matching `DEMO_DEVELOPMENT_GUIDE.md §5`. New types: `EditOperation`, `DiffLine`, `DiffLineKind`.
+- **`src/mockWorkspace.ts`** and **`src/App.tsx`** updated to consume the new array-shaped proposal via `proposal.edits[0]` (named `primaryEdit`).
+- **PROJECT_CONTROL.md** trimmed: removed sections that duplicated CLAUDE.md (source-of-truth list, daily loop, quality gates, git rules, design control). Kept lifecycle phases, change control, risk register. Added Phase 0.5.
+- **CONTEXT.md** trimmed to a factual snapshot: identity, stack, current state, key files, useful commands. Removed duplicated product/design rules.
+- **README.md** doc map updated; removed `skills/` repository-layout entries; linked `PRODUCT_OVERVIEW.md` and `docs/archive/`.
+- **DEMO_DEVELOPMENT_GUIDE.md §4** fixed: `Tailwind CSS` → `手写 CSS` (matches reality).
+- **`国产大模型桌面 AI 编程工具——项目决策文档.md`** moved to `docs/archive/` via `git mv`.
+- **PRODUCT_OVERVIEW.md** created (Chinese, non-technical product overview).
+- **TASKS.md** logged Phase 0.5 cleanup tasks (TASK-F001 through TASK-F007) as DONE.
+
+## Verification Performed
+
+```bash
+git status --short
+npx tsc --noEmit          # PASSED
+npm run build             # FAILED — environment issue (see below)
+```
+
+### Build environment note
+
+The current development environment runs Node.js v16.15.1, but Vite 7 requires Node.js ≥20.19. `tsc --noEmit` passes cleanly, validating that the type contract refactor is correct. `npm run build` (which chains `tsc && vite build`) fails at the `vite build` step due to Node version mismatch, **not** due to project code. The same failure mode would occur on this environment regardless of today's changes.
+
+Recommended action on the actual dev machine: run `node --version` first; if <20, install via nvm before running `npm run build`.
 
 ## Current Working State
 
-The project is currently a static frontend demo shell. It does not yet read real files or call Deepseek.
+The tracked working tree has the following modifications staged or unstaged at handoff:
 
-Known working commands:
+- New file: `PRODUCT_OVERVIEW.md`
+- Renamed: `国产大模型...项目决策文档.md` → `docs/archive/`
+- Modified: `CLAUDE.md`, `CONTEXT.md`, `DEMO_DEVELOPMENT_GUIDE.md`, `PROJECT_CONTROL.md`, `README.md`, `TASKS.md`, `PROJECT_STATUS.md`, `.gitignore`, `src/types.ts`, `src/mockWorkspace.ts`, `src/App.tsx`
+- Project `skills/` directory removed entirely; native versions installed system-wide at `~/.claude/skills/brand-guidelines/` (from anthropics/skills) and `~/.claude/skills/grill-me/` (carried over from project)
+- Side effect of `npm install`: `package-lock.json` shows minor diff (regenerated for current Node; safe to commit or revert depending on the dev machine's Node version)
 
-```bash
-npm install
-npm run build
-```
+## Open Items
 
-Expected next command:
-
-```bash
-npm run dev
-```
-
-Then inspect `http://127.0.0.1:1420`.
-
-## Current Git State
-
-At handoff, the tracked working tree was clean. Ignored local artifacts may exist:
-
-- `.DS_Store`
-- `dist/`
-- `node_modules/`
-
-These are expected and should not be committed.
-
-## Blockers Resolved
-
-- Previous approval failures were caused by the automatic approval reviewer calling a model not allowed by the API key.
-- Git permissions were corrected.
-- GitHub HTTPS auth failed, but SSH auth worked.
-- Remote already had a README commit; it was merged normally rather than force-pushed.
-- npm registry became reachable after permission changes.
-
-## Open Issues
-
-- UI has not yet been visually inspected in a browser after successful npm install.
-- Tauri dev shell has not yet been launched.
-- Rust backend has no real commands yet.
-- File tree uses mock data.
+- UI not yet visually inspected in a browser (requires Node 20+ environment).
+- Tauri dev shell not yet launched.
+- Rust backend has no real Tauri commands.
+- File tree still uses mock data.
 - Apply/undo are mock state changes only.
-- Deepseek harness is not implemented.
+- Deepseek harness not implemented.
 
 ## Tomorrow Start Plan
 
-1. Run `git status --short`.
-2. Read `AGENTS.md`.
-3. Run `npm run dev`.
-4. Open `http://127.0.0.1:1420` and visually inspect the mock workbench.
-5. Fix layout issues before adding backend behavior.
-6. Start `TASK-001`: visual QA and shell stabilization.
-7. Then start `TASK-002`: workspace picker and real file listing.
-
-## Verification Log
-
-2026-05-05:
-
-```bash
-npm ls --depth=0
-npm run build
-git status --short --ignored
-git push
-```
-
-Results:
-
-- npm dependencies installed.
-- Build passed.
-- Ignored artifacts stayed ignored.
-- Push to GitHub succeeded.
+1. Run `git pull` (sync with the other machine if it pushed first).
+2. Run `git status --short`.
+3. Read `CLAUDE.md`.
+4. Confirm Node ≥20: `node --version`.
+5. Run `npm run dev`.
+6. Open `http://127.0.0.1:1420` and visually inspect the workbench (TASK-001).
+7. After visual QA, start TASK-002 (workspace picker shell).

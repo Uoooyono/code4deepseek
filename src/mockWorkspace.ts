@@ -58,10 +58,15 @@ export const fileContents: Record<string, string> = {
 
 export const proposal: EditProposal = {
   summary: "将首页主按钮文案改得更明确，同时保持组件结构不变。",
-  path: "src/App.tsx",
-  oldStr: "<button>Start</button>",
-  newStr: "<button>Start coding</button>",
-  reason: "按钮动作更具体，便于用户理解下一步是进入编码工作流。"
+  edits: [
+    {
+      path: "src/App.tsx",
+      oldStr: "<button>Start</button>",
+      newStr: "<button>Start coding</button>",
+      reason: "按钮动作更具体，便于用户理解下一步是进入编码工作流。"
+    }
+  ],
+  notes: []
 };
 
 export const userRequest =

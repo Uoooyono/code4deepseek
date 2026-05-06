@@ -193,7 +193,7 @@ UI 应该像一个工作台：信息密度高、清晰、可预测。
 ### 技术基线
 
 - 桌面壳：Tauri v2。
-- 前端：React + TypeScript + Tailwind CSS。
+- 前端：React + TypeScript + 手写 CSS。
 - 后端：Rust Tauri commands。
 - 模型：只接入 Deepseek。
 - 模型策略：Deepseek-only，不做其他模型的接口、UI 或路由预留。
@@ -622,18 +622,9 @@ Demo 默认权限模式：**写入前确认**。
 
 ## 13. 给 Coding Agent 的工作规则
 
-本节作为后续 Codex / Claude Code / Deepseek 开发会话的共享指令块。
+工作规则、产品红线、Git 与验证流程的单一事实来源是 [CLAUDE.md](CLAUDE.md)。本文件只作为 Demo 的产品/架构规格说明，**不重复定义规则**。
 
-1. 保留原始项目决策文档作为战略上下文。
-2. 将本文档视为首个 Demo 的事实来源。
-3. 先构建垂直 Demo 闭环，再扩展功能面。
-4. 只实现 Deepseek；不再保留任何其他模型入口。
-5. v0 不做 Skill、RAG、终端和多模态。
-6. 未经校验、预览和明确确认，绝不写入文件。
-7. 绝不把破坏性 Git 操作用作 Demo 撤回机制。
-8. 优先构建小而可测试的模块，不要写一个巨大的 agent core。
-9. 将 Deepseek 特定行为限制在 harness 边界内。
-10. 新增功能前，说明它服务于 Demo 闭环中的哪一步。
+新增任何功能前，对照 CLAUDE.md 检查是否违反 §Prohibitions，并说明该功能服务于 §2 v0 Demo 闭环中的哪一步。
 
 ---
 

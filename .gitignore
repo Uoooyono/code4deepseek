@@ -12,3 +12,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Local-only Claude/Codex skill configs — see CLAUDE.md
+skills/
+
+# Per-machine Claude Code settings overrides (.claude/settings.json IS committed)
+.claude/settings.local.json
+.claude/scheduled_tasks.json

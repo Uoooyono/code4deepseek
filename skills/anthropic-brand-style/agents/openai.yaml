@@ -1,4 +1,0 @@
-interface:
-  display_name: "Anthropic Brand Style"
-  short_description: "Apply Claude-like Anthropic visual style."
-  default_prompt: "Use Anthropic Brand Style to design or review this interface."

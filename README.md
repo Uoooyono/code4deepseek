@@ -37,25 +37,27 @@ npm run tauri:dev
 
 ## Project Documents
 
-- [AGENTS.md](AGENTS.md): project-level instructions for all future agents and parallel workers.
-- [PROJECT_CONTROL.md](PROJECT_CONTROL.md): full-cycle project management rules.
-- [PROJECT_STATUS.md](PROJECT_STATUS.md): current state, today's recap, and next-session handoff.
-- [TASKS.md](TASKS.md): task board and backlog.
-- [CONTEXT.md](CONTEXT.md): shared context for future Codex / Claude Code / Deepseek sessions.
-- [DECISIONS.md](DECISIONS.md): decision log.
-- [DEMO_DEVELOPMENT_GUIDE.md](DEMO_DEVELOPMENT_GUIDE.md): demo specification and design requirements.
-- [国产大模型桌面 AI 编程工具——项目决策文档.md](国产大模型桌面%20AI%20编程工具——项目决策文档.md): original strategy archive with later revisions.
+- [CLAUDE.md](CLAUDE.md) — project-level rules for Claude Code (single source of truth).
+- [PROJECT_CONTROL.md](PROJECT_CONTROL.md) — lifecycle phases, change control, risk register.
+- [PROJECT_STATUS.md](PROJECT_STATUS.md) — current state and next-session handoff.
+- [TASKS.md](TASKS.md) — task board and backlog.
+- [CONTEXT.md](CONTEXT.md) — compact onboarding snapshot.
+- [DECISIONS.md](DECISIONS.md) — decision log.
+- [DEMO_DEVELOPMENT_GUIDE.md](DEMO_DEVELOPMENT_GUIDE.md) — v0 demo specification.
+- [PRODUCT_OVERVIEW.md](PRODUCT_OVERVIEW.md) — 中文产品总览（面向非技术读者）。
+- [docs/archive/](docs/archive/) — 原始战略文档存档。
 
 ## Repository Layout
 
 ```text
-src/                         React frontend demo shell
-src-tauri/                   Tauri v2 Rust app shell
-skills/anthropic-brand-style Codex skill for Claude-like visual style
-skills/grill-me              Codex skill for plan/design interrogation
-dist/                        Ignored build output
-node_modules/                Ignored dependencies
+src/          React frontend demo shell
+src-tauri/    Tauri v2 Rust app shell
+docs/         Long-form docs and archive
+dist/         Ignored build output
+node_modules/ Ignored dependencies
 ```
+
+> Claude / Codex skills live under `~/.claude/skills/` (or each agent's equivalent), not in this repo. `.gitignore` keeps `skills/` excluded as a defensive entry.
 
 ## Working Rule
 

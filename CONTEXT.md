@@ -1,8 +1,6 @@
 # Agent Context
 
-**Use this file when starting a new Codex / Claude Code / Deepseek session.**
-
-First read `AGENTS.md`. It is the mandatory project-level instruction file for all agents and parallel workers.
+Compact onboarding for a new Claude Code session. Read [CLAUDE.md](CLAUDE.md) first — it owns all project rules. This file only summarizes the **current factual state** of the codebase.
 
 ## Project Identity
 
@@ -20,24 +18,21 @@ First read `AGENTS.md`. It is the mandatory project-level instruction file for a
 
 ## Current Stack
 
-- Tauri v2
-- React
-- TypeScript
-- Rust
-- Vite
+- Tauri v2 / Rust backend
+- React 19 + TypeScript / Vite 7
 - lucide-react icons
+- Hand-written CSS
 
-## Current State
+## Current State (as of 2026-05-06)
 
 The app currently has:
 
 - static React workbench shell
 - mock file tree
 - mock file content
-- mock edit proposal
+- mock edit proposal (now in array shape per DEMO_DEVELOPMENT_GUIDE §5)
 - mock apply/undo state
 - Tauri project shell
-- working npm build
 
 The app does not yet have:
 
@@ -48,29 +43,20 @@ The app does not yet have:
 - internal snapshots
 - Deepseek API calls
 
-## Critical Product Rules
+## Key Files
 
-- Deepseek-only. Do not add model selection UI or generic provider abstractions.
-- No file write without validation, diff preview, and explicit confirmation.
-- No destructive Git rollback.
-- No terminal execution in v0.
-- No RAG, multimodal, Skill UI, or multi-model features in v0.
-- Every feature must map to the v0 demo loop.
-
-## Design Rules
-
-Use the `anthropic-brand-style` skill for UI design work.
-
-Key visual rules:
-
-- warm off-white background
-- near-black primary text and primary button
-- clay orange accent
-- quiet warm gray borders
-- restrained shadows
-- 8px-or-less panel radius
-- workbench-first layout, not landing page
-- no purple-blue gradients, glassmorphism, bokeh, neon, or decorative orbs
+- `README.md` — human entry point.
+- `CLAUDE.md` — mandatory project-level agent rules.
+- `PROJECT_CONTROL.md` — lifecycle phases, change control, risk register.
+- `PROJECT_STATUS.md` — last-session handoff.
+- `TASKS.md` — task board.
+- `DEMO_DEVELOPMENT_GUIDE.md` — v0 demo spec.
+- `DECISIONS.md` — decision log.
+- `PRODUCT_OVERVIEW.md` — Chinese product overview for non-technical reading.
+- `src/types.ts` — TypeScript type contracts.
+- `src/App.tsx` — current mock workbench.
+- `src/styles.css` — current visual system.
+- `src-tauri/` — Tauri shell.
 
 ## Useful Commands
 
@@ -82,28 +68,11 @@ npm run tauri:dev
 git status --short
 ```
 
-## Key Files
-
-- `README.md`: human entry point.
-- `AGENTS.md`: mandatory project-level agent instructions.
-- `PROJECT_CONTROL.md`: project operating system.
-- `PROJECT_STATUS.md`: current state and handoff.
-- `TASKS.md`: task board.
-- `DEMO_DEVELOPMENT_GUIDE.md`: v0 demo spec.
-- `DECISIONS.md`: decision log.
-- `src/App.tsx`: current mock workbench.
-- `src/styles.css`: current visual system.
-- `src-tauri/`: Tauri shell.
-- `skills/anthropic-brand-style/`: Codex design skill.
-- `skills/grill-me/`: Codex skill for plan/design interrogation.
-
-## Tomorrow's Recommended First Move
-
-Run:
+## First Move
 
 ```bash
 git status --short
-npm run dev
+git pull
 ```
 
-Open `http://127.0.0.1:1420`, inspect the UI, then start `TASK-001`.
+Then read `PROJECT_STATUS.md` and pick a task from `TASKS.md`.
